@@ -1,7 +1,5 @@
 # FFmpegKitSlim
 
-
-
 Slim bindings for [FFmpegKit](https://github.com/tanersener/ffmpeg-kit) 
 
 
@@ -29,13 +27,13 @@ to
 `\FFmpegKitSlim\FFmpegKitSlim`
 
 5. In Visual Studio build FFmpegKitSlim project. 
-By default nuget package is created only in Release mode and is added to local nuget repository. You can change it in 'FFmpegKitSlim.csproj'
+By default nuget package is created only in Release mode and is added to local nuget repository. You can change it in `FFmpegKitSlim.csproj`
 ```xml
-	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	</PropertyGroup>
+<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+</PropertyGroup>
 
-	<Target Name="NugetAdd" AfterTargets="Pack">
-		<exec command="nuget add $(SolutionDir)nupkg\$(PackageId).$(PackageVersion).nupkg -source C:\Source\NugetRepo" />
-	</Target>
+<Target Name="NugetAdd" AfterTargets="Pack">
+    <exec command="nuget add $(SolutionDir)nupkg\$(PackageId).$(PackageVersion).nupkg -source C:\Source\NugetRepo" />
+</Target>
 ```
