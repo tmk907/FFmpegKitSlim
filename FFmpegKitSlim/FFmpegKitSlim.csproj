@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-android</TargetFramework>
+		<SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AndroidLibrary Include="ffmpegkitslim-release.aar" />
+		<AndroidLibrary Include="ffmpeg-kit.aar" Bind="false" />
+		<AndroidLibrary Include="smart-exception-common-0.2.1.jar" />
+		<AndroidLibrary Include="smart-exception-java-0.2.1.jar" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<Version>0.1.0</Version>
+		<PackageOutputPath>$(SolutionDir)nupkg</PackageOutputPath>
+		<Description>Slim bindings for FFmpegKit https://github.com/tanersener/ffmpeg-kit</Description>
+		<PackageTags>ffmpeg;xamarin;ffmpeg</PackageTags>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<Target Name="NugetAdd" AfterTargets="Pack">
+		<exec command="nuget add $(SolutionDir)nupkg\$(PackageId).$(PackageVersion).nupkg -source C:\Source\NugetRepo" />
+	</Target>
+
+</Project>
